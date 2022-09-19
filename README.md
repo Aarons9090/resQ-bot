@@ -12,7 +12,7 @@ A Python Selenium script that scans my area for the selected item and buys it if
 
 #### 1. Clone repo
 #### 2. Install dependencies
-#### 3.  Update chromedriver in necessary
+#### 3.  Update chromedriver if necessary
 #### 4. Create .env file and store your login info as 
 > EMAIL=""
 > PASSWORD=""
