@@ -9,7 +9,7 @@ CONFIG = dotenv_values(".env")
 EMAIL = CONFIG["EMAIL"]
 PASSWORD = CONFIG["PASSWORD"]
 
-OFFER_TO_FIND = "Insert offer here"
+OFFER_TO_FIND = "Yllätyskassi"
 
 
 def main():
@@ -37,6 +37,10 @@ def main():
     # click my location button to center map around user
     driver.find_element(By.CSS_SELECTOR, "#bigMapContainer > img").click()
 
+    print("10 second safe timer")
+    time.sleep(10)
+    print("Starting searching...")
+
     found = False
     while not found:
         offers = driver.find_elements(By.CLASS_NAME, "offerRow")
@@ -44,7 +48,8 @@ def main():
         for o in offers:
             try:
                 # search for the index of the wanted item
-                if o.text.find(OFFER_TO_FIND) != -1:
+                product = o.find_element(By.CLASS_NAME, "offerRowName").text
+                if product == OFFER_TO_FIND:
                     print("Found ", OFFER_TO_FIND)
                     found = True
                     # click on offer
